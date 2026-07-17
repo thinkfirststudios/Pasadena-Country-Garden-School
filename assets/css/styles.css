@@ -666,8 +666,27 @@ blockquote.pull {
 .ctaband__cta { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; margin-top: 1.9rem; }
 .ctaband__note { margin-top: 1.5rem; font-size: var(--step--1); color: rgba(255, 255, 255, 0.65); }
 
-/* Gallery */
-.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 0.9rem; }
+/* Gallery
+   Flex rather than grid: a partial last row should sit centred, and CSS grid
+   always packs items to the start of the line — auto-fill leaves a lone tile
+   stranded on the left. Flex + justify-content:center handles it, at the cost
+   of declaring the column count per breakpoint instead of auto-fitting.
+   Items don't grow (flex-grow 0), so the last row keeps normal tile size. */
+.gallery {
+  --cols: 4;
+  --gallery-gap: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gallery-gap);
+}
+.gallery__item {
+  /* The 0.02px trim absorbs sub-pixel rounding — without it a row of --cols
+     can total a hair over 100% and drop the last tile onto its own line. */
+  flex: 0 1 calc((100% - (var(--cols) - 1) * var(--gallery-gap)) / var(--cols) - 0.02px);
+}
+@media (max-width: 900px) { .gallery { --cols: 3; } }
+@media (max-width: 620px) { .gallery { --cols: 2; } }
 .gallery__item {
   border: 0;
   padding: 0;
