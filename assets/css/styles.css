@@ -680,6 +680,18 @@ blockquote.pull {
 .gallery__item:hover { transform: translateY(-3px); box-shadow: var(--shadow-2); }
 .gallery__item .ph { border-radius: var(--r-md); }
 .gallery__item:nth-child(4n + 1) .ph { aspect-ratio: 4 / 5; }
+.gallery__item img {
+  display: block;
+  width: 100%;
+  /* height:auto is load-bearing — the img's height="600" attribute otherwise
+     sets a real 600px height, and aspect-ratio is only honoured when one axis
+     is auto. Without it the tile renders 284x600 and cover slices a strip. */
+  height: auto;
+  aspect-ratio: 1 / 1;   /* thumbnails are pre-cropped square */
+  object-fit: cover;
+  border-radius: var(--r-md);
+  background: var(--green-050);
+}
 
 /* Lightbox */
 /* A closed <dialog> must stay display:none — that's the UA rule, and styling
@@ -702,6 +714,15 @@ blockquote.pull {
 .lightbox::backdrop { background: rgba(20, 45, 28, 0.9); }
 .lightbox[open] { display: grid; }
 .lightbox__body { max-width: min(900px, 92vw); width: 100%; }
+.lightbox__body img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: var(--r-md);
+  margin-inline: auto;
+}
 .lightbox__body .ph { aspect-ratio: 4 / 3; background: rgba(255, 255, 255, 0.06); color: #fff; border-color: rgba(255, 255, 255, 0.4); }
 .lightbox__caption { color: #fff; text-align: center; margin-top: 1rem; font-weight: 700; }
 .lightbox__close {

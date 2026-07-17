@@ -66,8 +66,10 @@
   }
 
   /* --- Gallery lightbox ----------------------------------------------------
-     Works with placeholders today and with real <img> once photos are dropped
-     in — it copies whatever the tile contains into the dialog. */
+     The grid shows 600px square thumbnails. A tile carrying data-full points at
+     the full-size uncropped photo, which is loaded on demand — cloning the
+     thumbnail would just upscale a crop. Falls back to cloning whatever the
+     tile holds (e.g. a placeholder) when there's no data-full. */
   var lightbox = document.querySelector("[data-lightbox]");
   if (lightbox) {
     var body = lightbox.querySelector("[data-lightbox-body]");
@@ -77,10 +79,20 @@
     document.querySelectorAll("[data-lightbox-open]").forEach(function (tile) {
       tile.addEventListener("click", function () {
         opener = tile;
-        var media = tile.querySelector("img, .ph");
+        var text = tile.dataset.caption || "";
         body.innerHTML = "";
-        if (media) body.appendChild(media.cloneNode(true));
-        caption.textContent = tile.dataset.caption || "";
+
+        if (tile.dataset.full) {
+          var full = new Image();
+          full.src = tile.dataset.full;
+          full.alt = text;
+          body.appendChild(full);
+        } else {
+          var media = tile.querySelector("img, .ph");
+          if (media) body.appendChild(media.cloneNode(true));
+        }
+
+        caption.textContent = text;
         if (typeof lightbox.showModal === "function") lightbox.showModal();
       });
     });
