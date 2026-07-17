@@ -207,20 +207,16 @@ p { text-wrap: pretty; }
 /* The real logo emblem (hand + seedling on a sage disc). It's slightly wider
    than tall, so height drives the size and width follows the art. */
 .logo__mark { height: 46px; width: auto; flex-shrink: 0; }
-.logo__text {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: 0.98rem;
-  line-height: 1.12;
-  color: var(--green-900);
-  letter-spacing: -0.02em;
-  max-width: 21ch; /* two tidy lines, never four */
-}
-.logo__text span { display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-500); font-family: var(--body); margin-top: 3px; }
+/* The school's own wordmark, in the logo's own typeface — set beside the
+   emblem rather than under it. The supplied logo stacks them, which gives the
+   wordmark ~21% of the lockup height: "GARDEN SCHOOL" only clears 7px once the
+   logo is ~120px tall, which no header can carry. Side by side the wordmark
+   takes the full height and stays readable at 34px. */
+.logo__word { height: 34px; width: auto; flex-shrink: 0; }
+
 @media (max-width: 420px) {
-  .logo__mark { height: 36px; }
-  .logo__text { font-size: 0.86rem; max-width: 15ch; }
-  .logo__text span { display: none; }
+  .logo__mark { height: 38px; }
+  .logo__word { height: 27px; }
 }
 
 .nav { display: flex; align-items: center; gap: 0.35rem; }
@@ -813,8 +809,15 @@ blockquote.pull {
 @media (max-width: 860px) { .footer__grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); } }
 .footer ul { list-style: none; padding: 0; display: grid; gap: 0.55rem; }
 .footer li { margin: 0; }
-.footer__logo { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
-.footer__logo .logo__text, .footer__logo .logo__text span { color: #fff; }
+.footer__logo { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+.footer__tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--green-500);
+  margin-bottom: 1rem;
+}
 .footer__social { display: flex; gap: 0.6rem; margin-top: 1rem; }
 .footer__social a {
   width: 40px; height: 40px;

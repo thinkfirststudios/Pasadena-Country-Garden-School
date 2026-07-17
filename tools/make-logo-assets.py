@@ -45,10 +45,29 @@ def tight(img, box=None):
     bb = im.getbbox()
     return im.crop(bb)
 
-# Emblem only — for the header and footer, paired with HTML type.
+# Emblem only — the left half of the horizontal header lockup.
 mark = tight(out, (0, 0, 500, split))
 mark.save(IMG / "logo-mark.png")
 print("logo-mark.png ", mark.size)
+
+# Wordmark only — "Pasadena Country / GARDEN SCHOOL" in the logo's own type.
+# Paired with the emblem, this rebuilds the logo horizontally for the header.
+# The original stacks them, which gives the wordmark ~21% of the lockup height:
+# at any sane header size "GARDEN SCHOOL" lands under 7px and turns to mush.
+# Side by side, the wordmark gets the full height and stays readable.
+word = tight(out, (0, split, 500, 500))
+word.save(IMG / "logo-wordmark.png")
+print("logo-wordmark.png", word.size, "ratio", round(word.width / word.height, 2))
+
+# Light version of the wordmark for the dark-green footer. The art is near-black
+# ink on transparent, so recolour the pixels and keep the existing alpha —
+# that preserves the antialiased letter edges instead of hard-keying them.
+light = Image.new("RGBA", word.size, (255, 255, 255, 0))
+light.putalpha(word.getchannel("A"))
+light.paste((248, 255, 237), (0, 0), word.getchannel("A"))
+light.putalpha(word.getchannel("A"))
+light.save(IMG / "logo-wordmark-light.png")
+print("logo-wordmark-light.png", light.size)
 
 # Full lockup — favicon / social / anywhere the whole logo belongs.
 full = tight(out)
