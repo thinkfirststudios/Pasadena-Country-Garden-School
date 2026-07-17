@@ -19,14 +19,14 @@ OUT.mkdir(exist_ok=True)
 
 #        source filename                                  slug                 focus
 PHOTOS = [
-    ("011 AP Backyard South with Bee Hives.JPG",          "backyard-treehouse",   0.50),
-    ("008 AP Garden Beds Long View.jpeg",                  "garden-beds-walkway",  0.50),
+    # Landscape: focus shifts the crop right, off the treehouse and onto the
+    # lawn, hedge and beehives.
+    ("011 AP Backyard South with Bee Hives.JPG",          "backyard-treehouse",   0.70),
     ("016 AP School Bed with Painted Picket Fence.jpeg",   "painted-picket-fence", 0.50),
     ("040 AP Child Pruning.png",                           "child-pruning",        0.35),
     ("007 AP Watercolor Hearts.png",                       "watercolor-hearts",    0.50),
     ("022 AP Older Student Cat Art.png",                   "cat-painting",         0.40),
     ("042 AP Fall Garden Baskets.png",                     "fall-baskets",         0.50),
-    ("027 AP Radishes.png",                                "radishes",             0.45),
     ("023 AP Garden Basket w Seeds.jpeg",                  "garden-basket",        0.50),
     ("031 AP Fresh Bread.png",                             "fresh-bread",          0.50),
     ("046 AP Carrots and Hummus.png",                      "carrots-hummus",       0.50),
@@ -40,11 +40,18 @@ THUMB, LARGE = 600, 1400
 
 
 def square(im, focus):
-    """Centre-weighted square crop, anchored vertically by `focus`."""
+    """Square crop anchored along whichever axis actually gets cropped.
+
+    focus 0 = left / top edge, 0.5 = centred, 1 = right / bottom edge.
+    A landscape photo is cropped horizontally, a portrait one vertically, so
+    one knob serves both. 0.5 reproduces a plain centre crop.
+    """
     w, h = im.size
     s = min(w, h)
-    left = (w - s) // 2
-    top = int((h - s) * focus)
+    if w >= h:
+        left, top = int((w - s) * focus), 0
+    else:
+        left, top = 0, int((h - s) * focus)
     return im.crop((left, top, left + s, top + s))
 
 
