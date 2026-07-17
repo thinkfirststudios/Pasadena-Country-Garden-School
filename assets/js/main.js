@@ -108,29 +108,9 @@
     });
   }
 
-  /* --- Contact form -------------------------------------------------------
-     No backend on a static host. Until a form service is connected, hand the
-     message to the parent's own mail client so nothing is silently lost. */
-  var form = document.querySelector("[data-contact-form]");
-  if (form) {
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var d = new FormData(form);
-      var subject = "Tour request — " + (d.get("name") || "New inquiry");
-      var lines = [
-        "Name: " + (d.get("name") || ""),
-        "Phone: " + (d.get("phone") || ""),
-        "Email: " + (d.get("email") || ""),
-        "Child's age: " + (d.get("age") || ""),
-        "Interested in: " + (d.get("program") || ""),
-        "",
-        d.get("message") || ""
-      ];
-      window.location.href =
-        "mailto:alexandrabcalder@gmail.com?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(lines.join("\n"));
-    });
-  }
+  /* The contact form was removed deliberately: it handed off via mailto: to an
+     inbox that isn't monitored for enquiries, so a parent could send a tour
+     request that nobody ever read. The phone is the real channel. */
 
   /* --- Footer year --------------------------------------------------------- */
   var year = document.querySelector("[data-year]");

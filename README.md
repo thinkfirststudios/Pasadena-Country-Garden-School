@@ -109,12 +109,21 @@ Search the files for `[CONFIRM]`, `[ATTACH]`, `[REVIEW]`, and `[DATE]`.
 **The licensing page is drafted from the brief and is not legal advice.** Have the
 client or their attorney confirm the required disclosures before launch.
 
-## 4. The contact form
+## 4. How families get in touch
 
-`contact.html` currently hands the message to the parent's own email app via
-`mailto:` so nothing is lost. **At launch, connect it to a form service**
-(Formspree, Netlify Forms, Basin) so submissions arrive without that step — the
-handoff is in `assets/js/main.js`, marked `TO DO AT LAUNCH`.
+**There is deliberately no contact form.** The phone is the channel — Alexandra
+answers her own, and the site says so in several places. An earlier draft had a
+form that handed off via `mailto:`, but it pointed at an inbox that isn't watched
+for enquiries: a parent could send a tour request that nobody ever read. A form
+that silently loses leads is worse than no form.
+
+The Contact page is the Visit details (address, phone, email, hours), a map, and
+a click-to-call button. Every page also carries a sticky **Call / Enroll now**
+bar on mobile, and applications go straight to Brightwheel.
+
+If a form is ever wanted, connect it to a service that emails *and* stores
+submissions (Formspree, Netlify Forms, Basin) — never `mailto:` — and only if
+someone has agreed to monitor it.
 
 ## 5. SEO / launch checklist
 

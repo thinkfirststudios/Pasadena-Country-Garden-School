@@ -72,63 +72,17 @@
   <section class="section">
     <div class="wrap">
       <div class="grid grid--2" style="gap:clamp(2rem,5vw,4rem)">
-        <div data-reveal>
-          <h2>Schedule a tour</h2>
-          <p style="color:var(--muted);margin-top:0.75rem">Send us a note and Alexandra will get back to you. If you'd rather talk now, just call — she answers her own phone.</p>
-
-          <form class="form" data-contact-form style="margin-top:1.75rem">
-            <div class="field">
-              <label for="name">Your name</label>
-              <input type="text" id="name" name="name" autocomplete="name" required>
-            </div>
-            <div class="grid grid--2" style="gap:1.1rem">
-              <div class="field">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel">
-              </div>
-              <div class="field">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" autocomplete="email" required>
-              </div>
-            </div>
-            <div class="grid grid--2" style="gap:1.1rem">
-              <div class="field">
-                <label for="age">Your child's age</label>
-                <input type="text" id="age" name="age" placeholder="e.g. 3 years">
-              </div>
-              <div class="field">
-                <label for="program">Interested in</label>
-                <select id="program" name="program">
-                  <option>Full-day program (8:00 AM – 3:00 PM)</option>
-                  <option>After-school care (3:00 – 6:00 PM)</option>
-                  <option>Half-day program</option>
-                  <option>Weekend / after hours</option>
-                  <option>Not sure yet</option>
-                </select>
-              </div>
-            </div>
-            <div class="field">
-              <label for="message">Anything you'd like us to know</label>
-              <textarea id="message" name="message" placeholder="Tell us about your child, the schedule you need, or any questions."></textarea>
-            </div>
-            <button class="btn btn--primary btn--lg" type="submit">Send message</button>
-            <p class="form__note">This opens your email app with the message ready to send. Prefer to talk? Call <a href="tel:+16269775980">(626)&nbsp;977-5980</a>.</p>
-            <!-- TO DO AT LAUNCH: connect this form to a service (Formspree, Netlify
-                 Forms, Basin) so submissions arrive without the parent's mail app.
-                 Until then main.js hands off to mailto: so nothing is lost. -->
-          </form>
-        </div>
 
         <div data-reveal>
           <h2>Visit</h2>
           <ul class="infolist" style="margin-top:1.5rem">
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-              <div><strong>Address</strong><a href="https://maps.google.com/?q=240+W+State+Street+Pasadena+CA+91105" target="_blank" rel="noopener">240 W State Street, Pasadena, CA 91105</a><br><span style="color:var(--muted);font-size:0.9rem">Across from Westridge School · Arroyo Seco</span></div>
+              <div><strong>Address</strong><a href="https://maps.google.com/?q=240+W+State+Street+Pasadena+CA+91105" target="_blank" rel="noopener">240 W State Street, Pasadena, CA 91105</a><br><span style="color:var(--muted);font-size:0.9rem">Across from Westridge School &middot; Arroyo Seco</span></div>
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
-              <div><strong>Phone</strong><a href="tel:+16269775980">(626)&nbsp;977-5980</a></div>
+              <div><strong>Phone</strong><a href="tel:+16269775980">(626)&nbsp;977-5980</a><br><span style="color:var(--muted);font-size:0.9rem">Alexandra answers her own phone — this is the fastest way to reach us.</span></div>
             </li>
             <li>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
@@ -138,10 +92,10 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
               <div><strong>Hours</strong>
                 <span style="color:var(--muted)">
-                  Full-day program · 8:00 AM – 3:00 PM<br>
-                  After-school care · 3:00 – 6:00 PM<br>
-                  Half-day program · upon request<br>
-                  Saturday–Sunday · inquire for offerings<br>
+                  Full-day program &middot; 8:00 AM – 3:00 PM<br>
+                  After-school care &middot; 3:00 – 6:00 PM<br>
+                  Half-day program &middot; upon request<br>
+                  Saturday–Sunday &middot; inquire for offerings<br>
                   Closed on major holidays<br>
                   <em>After-hours available upon request.</em>
                 </span>
@@ -149,10 +103,21 @@
             </li>
           </ul>
 
-          <iframe class="map" style="margin-top:1.75rem" title="Map showing Pasadena Country Garden School at 240 W State Street, Pasadena, CA"
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:2rem">
+            <a class="btn btn--green btn--lg" href="tel:+16269775980">Call (626)&nbsp;977-5980</a>
+            <a class="btn btn--primary btn--lg" href="https://schools.mybrightwheel.com/forms/53537db1-8987-4338-88eb-092476c12521/self-service" target="_blank" rel="noopener">Enroll now</a>
+          </div>
+        </div>
+
+        <div data-reveal>
+          <iframe class="map" title="Map showing Pasadena Country Garden School at 240 W State Street, Pasadena, CA"
             src="https://www.google.com/maps?q=240%20W%20State%20Street%2C%20Pasadena%2C%20CA%2091105&output=embed"
             loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <p style="margin-top:1rem;color:var(--muted);font-size:0.9rem">
+            Parking is on the street. Come to the garden gate — and bring your child if you can, we'd rather see how they take to the place.
+          </p>
         </div>
+
       </div>
     </div>
   </section>
