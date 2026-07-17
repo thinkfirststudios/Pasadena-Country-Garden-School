@@ -587,8 +587,13 @@ blockquote.pull {
   color: var(--ink);
 }
 
+/* A readable column for sections that have no photo beside them — full-width
+   body text at 1180px is far past a comfortable measure. */
+.narrow { max-width: 46rem; margin-inline: auto; }
+
 /* Trust badges */
 .trust { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.trust--center { justify-content: center; }
 .badge {
   display: inline-flex;
   align-items: center;
