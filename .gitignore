@@ -1,0 +1,30 @@
+# --- Camera originals -------------------------------------------------------
+# The unedited phone exports ("002 AP …", "021 AP …") live in assets/img/ so
+# they're on hand for cropping, but they are NOT web assets: ~320 MB, mostly
+# photographs saved as 13-16 MB PNGs. Committing them would bloat every clone
+# and the Pages deploy for no visible gain.
+#
+# They stay on disk (and in OneDrive) — only the cropped, compressed JPEGs ship.
+# Pattern matches the "NNN Name.ext" convention every original uses.
+assets/img/[0-9][0-9][0-9] *
+
+# HEIC is not a web format — convert before use.
+*.HEIC
+*.heic
+
+# --- OS / editor cruft ------------------------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+.vscode/
+.idea/
+
+# --- Python (tools/) --------------------------------------------------------
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# --- Scratch ----------------------------------------------------------------
+.tmp/
