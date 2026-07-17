@@ -326,9 +326,10 @@ p { text-wrap: pretty; }
   padding-block: clamp(2.5rem, 5vw, 4.5rem);
 }
 .hero__body { max-width: 34rem; }
-/* Slightly under --step-4: at full size the headline broke to four ragged
-   lines in this narrower column. */
-.hero h1 { color: var(--green-900); font-size: clamp(2rem, 1.4rem + 2.5vw, 3.4rem); }
+/* Sized to the real headline, not the other way round: the school's promise
+   runs ~100 characters, and at display size it stacked to six lines and shoved
+   the CTAs under the fold. This keeps it to four. */
+.hero h1 { color: var(--green-900); font-size: clamp(1.7rem, 1.1rem + 1.9vw, 2.5rem); }
 .hero__sub {
   font-size: var(--step-1);
   margin-top: 1rem;
@@ -383,7 +384,7 @@ p { text-wrap: pretty; }
    of this hero. Tighten the type and let the two buttons sit side by side. */
 @media (max-width: 560px) {
   .hero__inner { padding-block: 1.75rem 2rem; }
-  .hero h1 { font-size: clamp(1.9rem, 8vw, 2.4rem); }
+  .hero h1 { font-size: clamp(1.45rem, 6.2vw, 1.95rem); }
   .hero__sub { font-size: 1rem; margin-top: 0.7rem; line-height: 1.5; }
   .hero__eyebrow { font-size: 0.76rem; margin-bottom: 0.75rem; }
   .hero__cta { margin-top: 1.2rem; gap: 0.6rem; }
